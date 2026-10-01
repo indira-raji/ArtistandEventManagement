@@ -1,0 +1,21 @@
+{% extends "artist/base.html" %}
+
+{% block content %}
+
+<h4>Payments</h4>
+
+{% for payment in payments %}
+
+<div class="card p-3 mb-3">
+
+<h6>{{ payment.booking.event_name }}</h6>
+
+<p>Amount: ₹{{ payment.amount }}</p>
+
+<span class="badge bg-success">{{ payment.status }}</span>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

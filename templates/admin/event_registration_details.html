@@ -1,0 +1,45 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<h3>Event Management Details</h3>
+<h1>Evet name:{{ event.team_name }}</h1>
+<table class="table table-bordered">
+
+<tr>
+<th>Team Name</th>
+<td>{{ event.team_name }}</td>
+</tr>
+
+<tr>
+<th>Owner Name</th>
+<td>{{ event.owner_name }}</td>
+</tr>
+
+<tr>
+<th>Email</th>
+<td>{{ event.email }}</td>
+</tr>
+
+<tr>
+<th>Phone</th>
+<td>{{ event.phone }}</td>
+</tr>
+
+<tr>
+<th>City</th>
+<td>{{ event.city }}</td>
+</tr>
+
+<tr>
+<th>Status</th>
+<td>{{ event.status }}</td>
+</tr>
+
+</table>
+
+<a href="{% url 'admin-events' %}" class="btn btn-secondary">
+Back
+</a>
+
+{% endblock %}

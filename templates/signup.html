@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(135deg,#7C3AED,#EC4899);
+}
+
+.register{
+width:380px;
+padding:35px;
+background: rgba(255,255,255,0.15);
+backdrop-filter: blur(15px);
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+color:white;
+}
+
+.register h3{
+text-align:center;
+margin-bottom:25px;
+font-size:26px;
+}
+
+.input-group{
+display:flex;
+flex-direction:column;
+margin-bottom:15px;
+}
+
+.input-group label{
+margin-bottom:6px;
+font-size:14px;
+}
+
+.input-group input,
+.input-group select{
+padding:10px;
+border:none;
+border-radius:8px;
+outline:none;
+font-size:14px;
+}
+
+.btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+margin-top:10px;
+background:white;
+color:#7C3AED;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#f2f2f2;
+transform:scale(1.03);
+}
+
+.login-text{
+margin-top:18px;
+text-align:center;
+font-size:14px;
+}
+
+.login-text a{
+color:white;
+font-weight:600;
+text-decoration:none;
+}
+
+.error{
+color:yellow;
+text-align:center;
+margin-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="register">
+
+<h3>Create Account</h3>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+{% csrf_token %}
+
+<div class="input-group">
+<label>Full Name</label>
+<input type="text" name="name" placeholder="Enter your name" required>
+</div>
+
+<div class="input-group">
+<label>Email</label>
+<input type="email" name="email" placeholder="Enter your email" required>
+</div>
+
+<div class="input-group">
+<label>Password</label>
+<input type="password" name="password" placeholder="Enter password" required>
+</div>
+
+<div class="input-group">
+<label>Confirm Password</label>
+<input type="password" name="repassword" placeholder="Confirm password" required>
+</div>
+
+<div class="input-group">
+<label>User Type</label>
+<select name="usertype" required>
+<option value="">Select Account Type</option>
+<option value="user">User</option>
+<option value="artist">Artist</option>
+<option value="event">Event Management</option>
+</select>
+</div>
+
+<button class="btn">Sign Up</button>
+
+</form>
+
+<div class="login-text">
+Already have an account? <a href="{% url 'login' %}">Login</a>
+</div>
+
+</div>
+
+</body>
+</html>

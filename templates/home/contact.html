@@ -1,0 +1,94 @@
+{% load static %}
+
+<div class="container">
+  <div class="footer">
+    <div class="row text-center text-md-start">
+
+      <div class="col-md-4 mb-4">
+        <h5>Contact</h5>
+        <p>📞 1234567890</p>
+        <p>✉️ indira@gmail.com</p>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <h5>Address</h5>
+        <p>Artists World Pvt Ltd</p>
+        <p>Chennai, Tamil Nadu</p>
+      </div>
+
+      <div class="col-md-4 mb-4 text-center">
+        <h5>Follow Us</h5>
+        <div class="social-icons mt-3">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-youtube"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <hr>
+
+    <p class="text-center text-muted mb-0">
+      © 2026 Artists World. All Rights Reserved.
+    </p>
+  </div>
+</div>
+
+<style>
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: 80px;
+  padding: 40px 20px;
+  background: rgba(255,255,255,0.1); /* glass effect */
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Footer Headings */
+.footer h5 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #ffd166;
+}
+
+/* Footer Text */
+.footer p {
+  color: #f3e8ff;
+  margin-bottom: 8px;
+}
+
+/* Social Icons */
+.social-icons i {
+  font-size: 22px;
+  margin: 0 10px;
+  transition: 0.3s;
+  color: #f3e8ff;
+}
+
+.social-icons i:hover {
+  color: #ffd166;
+  text-shadow: 0 0 15px #ffd166;
+  transform: scale(1.2);
+}
+
+/* Divider */
+.footer hr {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin: 30px 0 10px;
+}
+
+/* Footer Text */
+.footer p.text-muted {
+  color: rgba(255,255,255,0.6);
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .footer { padding: 30px 15px; }
+  .footer h5 { font-size: 18px; }
+  .social-icons i { font-size: 20px; margin: 0 8px; }
+}
+</style>

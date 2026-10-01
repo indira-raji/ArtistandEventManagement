@@ -1,0 +1,23 @@
+{% extends 'event/base.html' %}
+
+{% block content %}
+
+<h4>Total Revenue : ₹{{ total }}</h4>
+
+{% for p in payments %}
+
+<div class="booking-card">
+
+<p><b>Event:</b> {{ p.event_type }}</p>
+
+<p>Client: {{ p.user.name }}</p>
+
+<p>Amount: ₹{{ p.amount }}</p>
+
+<span class="badge badge-approved">Paid</span>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

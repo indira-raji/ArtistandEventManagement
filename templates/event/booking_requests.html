@@ -1,0 +1,35 @@
+{% extends 'event/base.html' %}
+
+{% block content %}
+
+<h4>Booking Requests</h4>
+
+{% for booking in bookings %}
+
+<div class="booking-card">
+
+<p><b>Client:</b> {{ booking.user.name }}</p>
+
+<p>Event: {{ booking.event_type }}</p>
+
+<p>Date: {{ booking.event_date }}</p>
+
+<span class="badge badge-pending">{{ booking.status }}</span>
+
+<div class="mt-2">
+
+<a href="{% url 'approve_booking' booking.id %}" class="btn btn-success btn-sm">
+Approve
+</a>
+
+<a href="{% url 'reject_booking' booking.id %}" class="btn btn-danger btn-sm">
+Reject
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'event/base.html' %}
+
+{% block content %}
+
+<h3>Welcome {{ company.team_name }}</h3>
+
+<div class="row">
+
+<div class="col-md-3">
+<div class="card-glass text-center">
+<h4>{{ total_events }}</h4>
+<p>Total Events</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card-glass text-center">
+<h4>{{ total_bookings }}</h4>
+<p>Total Bookings</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card-glass text-center">
+<h4>{{ confirmed }}</h4>
+<p>Confirmed</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card-glass text-center">
+<h4>₹{{ revenue }}</h4>
+<p>Total Earnings</p>
+</div>
+</div>
+
+</div>
+
+{% endblock %}

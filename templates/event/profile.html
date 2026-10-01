@@ -1,0 +1,27 @@
+{% extends 'event/base.html' %}
+
+{% block content %}
+
+<div class="card-glass">
+
+<h4>Organization Profile</h4>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input class="form-control mb-2" name="team_name" value="{{ company.team_name }}">
+
+<input class="form-control mb-2" name="owner_name" value="{{ company.owner_name }}">
+
+<input class="form-control mb-2" name="email" value="{{ company.email }}">
+
+<input class="form-control mb-2" name="phone" value="{{ company.phone }}">
+
+<button class="btn btn-light">Update</button>
+
+</form>
+
+</div>
+
+{% endblock %}

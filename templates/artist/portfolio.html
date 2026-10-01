@@ -1,0 +1,38 @@
+{% extends "artist/base.html" %}
+
+{% block content %}
+
+<h4>Portfolio</h4>
+
+<form method="POST" enctype="multipart/form-data" action="{% url 'upload_portfolio' %}">
+{% csrf_token %}
+
+<input type="file" name="images" class="form-control mb-3" multiple>
+
+<button class="btn btn-primary">Upload</button>
+
+</form>
+
+<div class="row">
+
+{% for item in portfolio %}
+
+<div class="col-md-3 mb-3">
+
+<div class="card p-2">
+
+<img src="{{ item.image.url }}" class="img-fluid">
+
+<a href="{% url 'delete_portfolio' item.id %}" class="btn btn-danger btn-sm mt-2">
+Remove
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

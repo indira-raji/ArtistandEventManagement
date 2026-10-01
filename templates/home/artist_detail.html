@@ -1,0 +1,211 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+body{
+  background: linear-gradient(135deg,#fcefee,#eaf6f6,#f3f0ff);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Glass Card */
+.glass-card{
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Profile Image */
+.profile-img{
+  width:220px;
+  height:220px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Buttons */
+.custom-btn{
+  border-radius:30px;
+  padding:10px 25px;
+  background:linear-gradient(90deg,#ff9a9e,#a18cd1);
+  border:none;
+  color:white;
+  font-weight:600;
+  text-decoration:none;
+  transition:0.3s;
+}
+.custom-btn:hover{
+  opacity:0.9;
+}
+
+/* Titles */
+.section-title{
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+/* Portfolio */
+.gallery img{
+  border-radius:15px;
+  height:150px;
+  object-fit:cover;
+  width:100%;
+  transition:0.3s;
+}
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+.badge-verified{
+  background:#28a745;
+  padding:6px 10px;
+  border-radius:8px;
+}
+
+/* Floating Book Button */
+.floating-book{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  z-index:999;
+  border-radius:50px;
+  padding:15px 25px;
+  font-weight:600;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Floating Contact */
+.floating-contact{
+  position:fixed;
+  bottom:90px;
+  right:25px;
+  z-index:999;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.contact-btn{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:20px;
+  text-decoration:none;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.whatsapp{background:#25D366;}
+.call{background:#007bff;}
+.email{background:#dc3545;}
+
+</style>
+
+<div class="container py-5">
+
+<!-- HERO SECTION -->
+
+<div class="glass-card mb-5">
+
+<div class="row align-items-center">
+
+<div class="col-md-4 text-center">
+
+{% if artist.profile_image %} <img src="{{ artist.profile_image.url }}" class="profile-img">
+{% endif %}
+
+</div>
+
+<div class="col-md-8">
+
+<h2 class="fw-bold">
+{{ artist.stage_name }}
+<span class="badge badge-verified">Verified</span>
+</h2>
+
+<p class="text-muted mb-1">{{ artist.artist_type }}</p>
+
+<p>📍 {{ artist.available_city }}</p>
+
+<p>
+💼 {{ artist.experience }} Years Experience |
+{{ artist.previous_events }} Events Completed
+</p>
+
+<h4 class="fw-bold text-primary">
+Starting from ₹{{ artist.price_start }}
+</h4>
+
+<a href="{% url 'book-artist' artist.id %}" class="custom-btn mt-3">
+Book Now
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ABOUT -->
+
+<div class="glass-card mb-5">
+
+<h4 class="section-title">About Artist</h4>
+
+<p>{{ artist.bio }}</p>
+
+</div>
+
+<!-- PORTFOLIO -->
+
+<div class="glass-card mb-5">
+
+<h4 class="section-title">Previous Events</h4>
+
+<div class="row g-3 gallery">
+
+{% for img in portfolio %}
+
+<div class="col-md-4">
+<img src="{{ img.image.url }}">
+</div>
+
+{% empty %}
+
+<p>No portfolio images available.</p>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Floating Contact Buttons -->
+
+<div class="floating-contact">
+
+<a href="https://wa.me/{{ artist.phone }}" class="contact-btn whatsapp">💬</a>
+
+<a href="tel:{{ artist.phone }}" class="contact-btn call">📞</a>
+
+<a href="mailto:{{ artist.email }}" class="contact-btn email">📧</a>
+
+</div>
+
+<!-- Floating Book Button -->
+
+<a href="{% url 'book-artist' artist.id %}" class="custom-btn floating-book">
+Book Now
+</a>
+
+{% endblock %}

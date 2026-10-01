@@ -1,0 +1,39 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+
+<h3>Welcome {{ user.name }}</h3>
+
+<div class="row mt-4">
+
+<div class="col-md-3">
+<div class="card-glass text-center">
+<h2>{{ total_bookings }}</h2>
+<p>Total Bookings</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card-glass text-center">
+<h2>{{ pending }}</h2>
+<p>Pending</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card-glass text-center">
+<h2>{{ confirmed }}</h2>
+<p>Confirmed</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card-glass text-center">
+<h2>₹{{ total_payment }}</h2>
+<p>Total Payments</p>
+</div>
+</div>
+
+</div>
+
+{% endblock %}

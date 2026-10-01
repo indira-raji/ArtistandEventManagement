@@ -1,0 +1,24 @@
+{% extends "artist/base.html" %}
+
+{% block content %}
+
+<h4>My Profile</h4>
+
+<form method="POST">
+{% csrf_token %}
+
+<input class="form-control mb-2" name="full_name" value="{{ artist.full_name }}">
+
+<input class="form-control mb-2" name="stage_name" value="{{ artist.stage_name }}">
+
+<input class="form-control mb-2" name="phone" value="{{ artist.phone }}">
+
+<input class="form-control mb-2" name="email" value="{{ artist.email }}">
+
+<input class="form-control mb-2" name="available_days" value="{{ artist.available_days }}">
+
+<button class="btn btn-primary">Save Changes</button>
+
+</form>
+
+{% endblock %}

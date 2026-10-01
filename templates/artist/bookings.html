@@ -1,0 +1,37 @@
+{% extends "artist/base.html" %}
+
+{% block content %}
+
+<h4>Booking Requests</h4>
+
+{% for booking in bookings %}
+
+<div class="card p-3 mb-3">
+
+<h6>{{ booking.event_name }}</h6>
+
+<p>Customer: {{ booking.user.name }}</p>
+
+<p>Date: {{ booking.event_date }}</p>
+
+<span class="badge bg-warning">{{ booking.status }}</span>
+
+<br>
+
+{% if booking.status == "pending" %}
+
+<a href="{% url 'accept_booking' booking.id %}" class="btn btn-success btn-sm">
+Accept
+</a>
+
+<a href="{% url 'reject_booking' booking.id %}" class="btn btn-danger btn-sm">
+Reject
+</a>
+
+{% endif %}
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

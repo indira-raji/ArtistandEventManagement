@@ -1,0 +1,146 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<h4 class="mb-3">Event Management Requests</h4>
+
+<table class="table table-bordered">
+
+<thead>
+<tr>
+<th>Company</th>
+<th>Owner</th>
+<th>City</th>
+<th>Status</th>
+<th>Action</th>
+<th>Details</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for event in pending_events %}
+
+<tr>
+
+<td>{{ event.team_name }}</td>
+<td>{{ event.owner_name }}</td>
+<td>{{ event.city }}</td>
+
+<td>
+<span class="badge bg-warning">
+Pending
+</span>
+</td>
+
+<td>
+
+<a href="{% url 'approve_event' event.id %}" class="btn btn-success btn-sm">
+Accept
+</a>
+
+<a href="{% url 'reject_event' event.id %}" class="btn btn-danger btn-sm">
+Reject
+</a>
+
+</td>
+<td>
+    <a href="{% url 'admin-event-details' event.id %}" class="btn btn-info btn-sm">
+View Details
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+
+
+<h4 class="mt-5">Approved Events</h4>
+
+<table class="table table-bordered">
+
+<thead>
+<tr>
+<th>Company</th>
+<th>Owner</th>
+<th>City</th>
+<th>Status</th>
+<th>Details</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for event in approved_events %}
+
+<tr>
+
+<td>{{ event.team_name }}</td>
+<td>{{ event.owner_name }}</td>
+<td>{{ event.city }}</td>
+
+<td>
+<span class="badge bg-success">
+Approved
+</span>
+</td>
+<td>
+    <a href="{% url 'admin-event-details' event.id %}" class="btn btn-info btn-sm">
+View Details
+</a>
+</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+<h4 class="mt-5">Rejected Events</h4>
+
+<table class="table table-bordered">
+
+<thead>
+<tr>
+<th>Company</th>
+<th>Owner</th>
+<th>email</th>
+<th>City</th>
+<th>Status</th>
+<th>Details</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for event in rejected_events %}
+
+<tr>
+
+<td>{{ event.team_name }}</td>
+<td>{{ event.owner_name }}</td>
+<td>{{ event.email }}</td>
+<td>{{ event.city }}</td>
+
+<td>
+<span class="badge bg-danger">
+Rejected
+</span>
+</td>
+<td><a href="{% url 'admin-event-details' event.id %}" class="btn btn-info btn-sm">
+View Details
+</a></td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+{% endblock %}

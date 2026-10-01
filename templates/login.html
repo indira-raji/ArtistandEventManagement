@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: "Poppins", sans-serif;
+}
+
+/* Background */
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(135deg,#7C3AED,#EC4899);
+}
+
+/* Login Card */
+
+.login{
+width:350px;
+padding:40px;
+background: rgba(255,255,255,0.15);
+backdrop-filter: blur(15px);
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+color:white;
+}
+
+/* Title */
+
+.login h3{
+text-align:center;
+margin-bottom:25px;
+font-size:26px;
+}
+
+/* Input Group */
+
+.input-group{
+margin-bottom:20px;
+display:flex;
+flex-direction:column;
+}
+
+/* Label */
+
+.input-group label{
+margin-bottom:6px;
+font-size:14px;
+}
+
+/* Inputs */
+
+.input-group input{
+padding:10px;
+border:none;
+outline:none;
+border-radius:8px;
+font-size:14px;
+}
+
+/* Button */
+
+.btn{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+background:white;
+color:#7C3AED;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#f3f3f3;
+transform:scale(1.03);
+}
+
+/* Signup text */
+
+.login h4{
+margin-top:20px;
+text-align:center;
+font-size:14px;
+}
+
+.login a{
+color:white;
+font-weight:600;
+}
+
+.error{
+color:yellow;
+text-align:center;
+margin-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login">
+
+<h3>Login</h3>
+
+<!-- Error Message -->
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+{% csrf_token %}
+
+<div class="input-group">
+<label>Email</label>
+<input type="email" name="email" placeholder="Enter your Email" required>
+</div>
+
+<div class="input-group">
+<label>Password</label>
+<input type="password" name="password" placeholder="Enter your Password" required>
+</div>
+
+<button class="btn">Login</button>
+
+</form>
+
+<h4>If you don't have an account? 
+<a href="/signup/">Sign Up</a>
+</h4>
+
+</div>
+
+</body>
+</html>

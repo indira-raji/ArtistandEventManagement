@@ -1,0 +1,63 @@
+{% extends 'event/base.html' %}
+
+{% block content %}
+
+<h4>Manage Events</h4>
+
+<form method="POST" action="{% url 'add_event' %}">
+
+{% csrf_token %}
+
+<input class="form-control mb-2" name="event_name" placeholder="Event Name">
+
+<select name="event_type" class="form-control mb-2">
+
+{% for e in event_types %}
+
+<option value="{{ e.id }}">{{ e.title }}</option>
+
+{% endfor %}
+
+</select>
+
+<input class="form-control mb-2" name="location" placeholder="Location">
+
+<textarea class="form-control mb-2" name="description"></textarea>
+
+<h6>Packages</h6>
+
+<input class="form-control mb-2" name="silver_price" placeholder="Silver Price">
+
+<input class="form-control mb-2" name="gold_price" placeholder="Gold Price">
+
+<input class="form-control mb-2" name="platinum_price" placeholder="Platinum Price">
+
+<button class="btn btn-success">Create Event</button>
+
+</form>
+
+<hr>
+
+{% for e in events %}
+
+<div class="booking-card">
+
+<h5>{{ e.event_name }}</h5>
+
+<p>{{ e.location }}</p>
+
+<ul>
+
+<li>Silver ₹{{ e.silver_price }}</li>
+<li>Gold ₹{{ e.gold_price }}</li>
+<li>Platinum ₹{{ e.platinum_price }}</li>
+
+</ul>
+
+<a href="{% url 'delete_event' e.id %}" class="btn btn-danger btn-sm">Delete</a>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

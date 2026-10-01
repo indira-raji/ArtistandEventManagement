@@ -1,0 +1,21 @@
+{% extends 'event/base.html' %}
+
+{% block content %}
+
+<h4>My Other Bookings</h4>
+
+{% for b in artist_bookings %}
+
+<div class="booking-card">
+
+<p><b>Artist:</b> {{ b.artist.stage_name }}</p>
+
+<p>Date: {{ b.event_date }}</p>
+
+<span class="badge badge-approved">{{ b.status }}</span>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

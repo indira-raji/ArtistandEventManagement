@@ -1,0 +1,71 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<h3>Artist Registration Details</h3>
+<h4>Stage Name: {{ artist.stage_name }}</h4>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Full Name</th>
+<td>{{ artist.full_name }}</td>
+</tr>
+
+<tr>
+<th>Stage Name</th>
+<td>{{ artist.stage_name }}</td>
+</tr>
+
+<tr>
+<th>Artist Category</th>
+<td>{{ artist.artist_type }}</td>
+</tr>
+
+<tr>
+<th>Email</th>
+<td>{{ artist.email }}</td>
+</tr>
+
+<tr>
+<th>Phone</th>
+<td>{{ artist.phone }}</td>
+</tr>
+
+<tr>
+<th>Experience</th>
+<td>{{ artist.experience }} Years</td>
+</tr>
+
+<tr>
+<th>City</th>
+<td>{{ artist.available_city }}</td>
+</tr>
+
+<tr>
+<th>Languages</th>
+<td>{{ artist.languages }}</td>
+</tr>
+
+<tr>
+<th>Skills</th>
+<td>{{ artist.skills }}</td>
+</tr>
+
+<tr>
+<th>Status</th>
+<td>{{ artist.status }}</td>
+</tr>
+<tr>
+    <th>Social</th>
+    <td>
+        {{ artist.social_link }}
+    </td>
+</tr>
+</table>
+
+<a href="{% url 'admin-artists' %}" class="btn btn-secondary">
+Back
+</a>
+
+{% endblock %}

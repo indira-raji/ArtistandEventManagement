@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+/* Body Glass Gradient */
+body {
+  background: linear-gradient(135deg,#7C3AED,#EC4899);
+  font-family: 'Poppins', sans-serif;
+  min-height:100vh;
+}
+
+/* Form Card */
+.form-card{
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  color:white;
+}
+
+/* Title */
+.form-card h2{
+  text-align:center;
+  margin-bottom:25px;
+  font-weight:700;
+}
+
+/* Labels */
+.form-label{
+  font-weight:500;
+}
+
+/* Inputs */
+.form-control, .form-select, .form-check-input{
+  border-radius:10px;
+  outline:none;
+}
+
+/* Buttons */
+.btn-submit{
+  background:white;
+  color:#7C3AED;
+  font-weight:600;
+  border:none;
+  border-radius:10px;
+  padding:10px 25px;
+  transition:0.3s;
+}
+
+.btn-submit:hover{
+  background:#f3f3f3;
+  transform:scale(1.03);
+}
+
+/* Checkbox/Radio labels */
+.form-check-label{
+  margin-left:5px;
+}
+
+/* File input */
+input[type="file"]{
+  color:white;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .form-card{
+    padding:20px;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="form-card">
+    <form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="mb-3">
+<label class="form-label">Full Name *</label>
+<input type="text" name="full_name" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Stage Name *</label>
+<input type="text" name="stage_name" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<label>Email *</label>
+<input type="email" name="email" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<label>Phone *</label>
+<input type="text" name="phone" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<label>Artist Type *</label>
+
+<select name="artist_type" class="form-select" required>
+
+<option value="">Select</option>
+
+{% for type in artist_types %}
+<option value="{{ type.title }}">
+{{ type.title }}
+</option>
+{% endfor %}
+
+</select>
+</div>
+
+<div class="mb-3">
+<label>Languages</label>
+<input type="text" name="languages" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Experience</label>
+<input type="number" name="experience" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Previous Events</label>
+<input type="number" name="previous_events" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Skills</label>
+<textarea name="skills" class="form-control"></textarea>
+</div>
+
+<div class="mb-3">
+<label>Price Range</label>
+
+<input type="number" name="price_start" placeholder="Start" class="form-control">
+
+<input type="number" name="price_end" placeholder="End" class="form-control">
+
+</div>
+
+<div class="mb-3">
+<label>Travel Charge</label>
+<input type="number" name="travel_charge" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Available City</label>
+<input type="text" name="available_city" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Available Days</label>
+
+<select name="available_days" class="form-select">
+
+<option>All Days</option>
+<option>Weekdays</option>
+<option>Weekends</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+<label>Start Time</label>
+<input type="time" name="time_start" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>End Time</label>
+<input type="time" name="time_end" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Bio</label>
+<textarea name="bio" class="form-control"></textarea>
+</div>
+
+<div class="mb-3">
+<label>Profile Image</label>
+<input type="file" name="profile_image" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Portfolio</label>
+<input type="file" name="portfolio" multiple class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Social Link</label>
+<input type="url" name="social_link" class="form-control">
+</div>
+
+<button type="submit" class="btn btn-submit">
+Register
+</button>
+
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'admin/base.html' %}
+
+{% block content %}
+
+<h4 class="mb-3">Event Booking History</h4>
+
+<div class="table-box">
+
+<div class="table-responsive">
+
+<table class="table table-bordered">
+
+<thead class="table-light">
+
+<tr>
+<th>User</th>
+<th>Event Manager</th>
+<th>Event Type</th>
+<th>Event Date</th>
+<th>Status</th>
+<th>Amount</th>
+<th>Commission (10%)</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for booking in bookings %}
+
+<tr>
+
+<td>{{ booking.user.name }}</td>
+
+<td>{{ booking.company.team_name }}</td>
+
+<td>{{ booking.event_type.name }}</td>
+
+<td>{{ booking.event_date }}</td>
+
+<td>
+
+{% if booking.status == "confirmed" %}
+
+<span class="badge bg-success">
+Confirmed
+</span>
+
+{% elif booking.status == "pending" %}
+
+<span class="badge bg-warning">
+Pending
+</span>
+
+{% else %}
+
+<span class="badge bg-secondary">
+Completed
+</span>
+
+{% endif %}
+
+</td>
+
+<td>₹{{ booking.amount }}</td>
+
+<td>₹{{ booking.amount|floatformat:2 }}</td>
+<td>₹{{ booking.amount|floatformat:2 }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}
+</body>
+</html>

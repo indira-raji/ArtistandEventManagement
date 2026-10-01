@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Packages</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/packages.css' %}">
+</head>
+<body>
+
+<!-- Event Type Filter -->
+<div class="container text-center my-4">
+    <form method="get">
+        <select name="event_type" onchange="this.form.submit()" class="form-select w-50 mx-auto">
+            <option value="">All Events</option>
+            {% for type in event_types %}
+                <option value="{{ type.title }}" {% if selected_event == type.title %}selected{% endif %}></option>{{ type.title }}</option>
+                
+    {{ type.title }}
+</option>
+                {% endfor %}
+        </select>
+    </form>
+</div>
+
+<!-- Packages Section -->
+{% if package_groups %}
+    {% for package_group, packages in package_groups %}
+        {% if packages.exists %}
+            <h2 class="section-title text-center my-3">
+                {% if package_group == 'Silver' %}🥈
+                {% elif package_group == 'Gold' %}🥇
+                {% else %}💎{% endif %}
+                {{ package_group }} Package
+            </h2>
+
+            <div class="package-container d-flex flex-wrap justify-content-center gap-3">
+                {% for package in packages %}
+                    <div class="package-card card p-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ package.package_name }}</h5>
+                            <p class="card-text">{{ package.description }}</p>
+                            <p class="card-text"><strong>Price:</strong> ₹{{ package.price }}</p>
+                            <a href="{% url 'package-detail' package.id %}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% if not silver_packages.exists and not gold_packages.exists and not diamond_packages.exists %}
+        <p class="text-center mt-5">No packages available for {{ selected_event }}.</p>
+    {% endif %}
+
+{% else %}
+    <p class="text-center mt-5">Please select an event type to see packages.</p>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

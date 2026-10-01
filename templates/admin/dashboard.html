@@ -1,0 +1,43 @@
+    {% extends 'admin/base.html' %}
+
+{% block content %}
+
+<div class="row g-3">
+<div class="col-md-3">
+<div class="card p-4 bg-dark text-white">
+<h3>{{ user_count }}</h3>
+<p>Total Users</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-4 bg-primary text-white">
+<h3>{{ artist_count }}</h3>
+<p>Total Artists</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-4 bg-warning text-white">
+<h3>{{ event_count }}</h3>
+<p>Event Managers</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-4 bg-info text-white">
+<h3>{{ bookings }}</h3>
+<p>Total Bookings</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-4 bg-danger text-white">
+<h3>₹{{ revenue }}</h3>
+<p>Total Revenue</p>
+</div>
+</div>
+
+</div>
+
+{% endblock %}

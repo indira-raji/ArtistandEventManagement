@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'admin/base.html' %}
+
+{% block content %}
+
+<h4>Artist Booking History</h4>
+
+<table class="table">
+
+<thead>
+
+<tr>
+<th>User</th>
+<th>Artist</th>
+<th>Date</th>
+<th>Status</th>
+<th>Amount</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for booking in bookings %}
+
+<tr>
+
+<td>{{ booking.user.name }}</td>
+<td>{{ booking.artist.stage_name }}</td>
+<td>{{ booking.event_date }}</td>
+
+<td>{{ booking.status }}</td>
+
+<td>₹{{ booking.amount }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}
+</body>
+</html>

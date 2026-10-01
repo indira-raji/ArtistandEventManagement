@@ -1,0 +1,44 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<h3 class="section-title">Book {{ type }} For Your Event</h3>
+
+<div class="row g-4">
+
+{% for artist in artists %}
+
+<div class="col-md-4">
+
+<div class="artist-card">
+
+{% if artist.profile_image %}
+<img src="{{ artist.profile_image.url }}">
+{% else %}
+<img src="{% static 'images/default.png' %}">
+{% endif %}
+
+<h5>{{ artist.stage_name }}</h5>
+
+<p>{{ artist.available_city }}</p>
+
+<p>₹{{ artist.price_start }}</p>
+
+<a href="{% url 'user-artist-detail' artist.id %}" class="btn btn-primary">
+View details
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+{% endblock %}

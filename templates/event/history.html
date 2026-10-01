@@ -1,0 +1,31 @@
+{% extends 'event/base.html' %}
+
+{% block content %}
+
+<h4>Booking History</h4>
+
+<table class="table text-white">
+
+<tr>
+<th>User</th>
+<th>Date</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+
+{% for b in history %}
+
+<tr>
+
+<td>{{ b.user.name }}</td>
+<td>{{ b.event_date }}</td>
+<td>₹{{ b.amount }}</td>
+<td>{{ b.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

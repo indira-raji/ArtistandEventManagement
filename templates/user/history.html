@@ -1,0 +1,57 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<h3>Booking History</h3>
+
+<h4 class="mt-4">Artist Bookings</h4>
+
+{% for booking in artist_history %}
+
+<div class="booking-card">
+
+<h5>{{ booking.artist.stage_name }}</h5>
+
+<p>Date : {{ booking.event_date }}</p>
+
+<p>Amount : ₹{{ booking.amount }}</p>
+
+<span class="badge-confirm">{{ booking.status }}</span>
+
+</div>
+
+{% empty %}
+
+<p>No Artist bookings</p>
+
+{% endfor %}
+
+<h4 class="mt-5">Event Bookings</h4>
+
+{% for booking in event_history %}
+
+<div class="booking-card">
+
+<h5>{{ booking.company.team_name }}</h5>
+
+<p>Event : {{ booking.event_type }}</p>
+
+<p>Date : {{ booking.event_date }}</p>
+
+<p>Amount : ₹{{ booking.amount }}</p>
+
+<span class="badge-confirm">{{ booking.status }}</span>
+
+</div>
+
+{% empty %}
+
+<p>No event bookings</p>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+
+<h4>Event Bookings</h4>
+
+{% for booking in event_bookings %}
+
+<div class="booking-card">
+
+<h5>{{ booking.company.team_name }}</h5>
+
+<p>Event : {{ booking.event_type }}</p>
+
+<p>Date : {{ booking.event_date }}</p>
+
+<p>Amount : ₹{{ booking.amount }}</p>
+
+<span class="badge-confirm">{{ booking.status }}</span>
+
+</div>
+
+{% empty %}
+
+<p>No event bookings</p>
+
+{% endfor %}
+
+{% endblock %}

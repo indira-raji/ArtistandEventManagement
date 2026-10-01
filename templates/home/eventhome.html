@@ -1,0 +1,149 @@
+{% load static %}  <!-- Load static files -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Events - Event World</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+/* Body Background - match Login page */
+body{
+  min-height:100vh;
+  background: linear-gradient(135deg,#7C3AED,#f18fc0);
+  color:white;
+}
+
+/* Page Title */
+.page-title{
+  font-size:42px;
+  font-weight:800;
+  text-align:center;
+  margin-top:50px;
+  background: linear-gradient(90deg,#ffffff,#ffd6f0);
+ 
+  -webkit-text-fill-color:transparent;
+}
+
+/* Subtitle */
+.subtitle{
+  text-align:center;
+  color:#f0e5f8;
+  margin-bottom:40px;
+}
+
+/* Section Titles */
+.section-title{
+  text-align:center;
+  font-weight:700;
+  margin:50px 0 30px;
+  font-size:28px;
+  color:#ffd6f0;
+  text-shadow:0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* Event Card - Glass Style */
+.event-card{
+  width:255px;
+  height:327px;
+  border-radius:20px;
+  overflow:hidden;
+  cursor:pointer;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  border:1px solid rgba(255,255,255,0.2);
+  box-shadow:0 8px 25px rgba(0,0,0,0.2);
+  transition:0.4s;
+}
+
+.event-card:hover{
+  transform: translateY(-8px) scale(1.05);
+  box-shadow:0 20px 40px rgba(0,0,0,0.35);
+}
+
+/* Event Images */
+.event-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:20px;
+  transition:0.4s;
+}
+
+
+.event-card:hover img{
+  transform:scale(1.1);
+}
+
+/* Event Title */
+.event-title{
+  margin-top:10px;
+  font-weight:600;
+  color:white;
+  text-shadow:0 1px 4px rgba(0,0,0,0.4);
+  transition:0.3s;
+}
+
+.event-title:hover{
+  color:#ffd166;
+  transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+  .page-title{
+    font-size:32px;
+  }
+  .section-title{
+    font-size:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+{% for category in categories %}
+  <h2 class="section-title">{{ category.name }}</h2>
+
+  <div class="row">
+
+    {% for event in category.events.all %}
+    
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 text-center">
+
+  <div class="event-card">
+      <img src="{{ event.image.url }}" alt="{{ event.title }}">
+  </div>
+
+  <h5 class="event-title">{{ event.title }}</h5>
+
+  <a href="{% url 'event-packages' %}?event_type={{ category.name }}" class="btn btn-light btn-sm mt-2">
+    View Events 
+</a>
+
+</div>
+    {% endfor %}
+
+  </div>
+
+{% endfor %}
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

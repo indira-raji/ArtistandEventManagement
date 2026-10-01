@@ -1,0 +1,159 @@
+{% load static %}
+
+
+<title>Event World Navbar</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+  background: linear-gradient(135deg,#7C3AED,#EC4899);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Glass */
+.navbar{
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  padding:12px 20px;
+  margin:20px;
+}
+
+/* Brand */
+.brand-title{
+  font-weight:700;
+  color:white;
+  letter-spacing:1px;
+}
+
+/* Nav Links */
+.navbar-nav .nav-link{
+  color:white !important;
+  font-weight:500;
+  margin-left:15px;
+  transition:0.3s;
+}
+.navbar-nav .nav-link:hover{
+  color:#ffd166 !important;
+  transform:translateY(-2px);
+}
+
+/* Toggler */
+.navbar-toggler{
+  border:none;
+  outline:none;
+  z-index:10;
+}
+
+/* Use default Bootstrap icon but recolor */
+.navbar-toggler-icon{
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  width: 30px;
+  height: 30px;
+}
+
+/* Search */
+form{
+  position:absolute;
+  top:100%;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(90%,350px);
+  margin-top:12px;
+}
+
+form input{
+  box-shadow:0px 3px 8px rgba(0,0,0,0.1);
+  border:none;
+  padding:10px;
+  border-radius:8px;
+  outline:none;
+}
+
+.search-btn{
+  background:#ffd166;
+  border:none;
+  font-weight:500;
+}
+.search-btn:hover{
+  background:#ffc107;
+}
+
+/* Logo */
+.navbar-brand img{
+  border-radius:10px;
+}
+
+/* Responsive */
+@media(max-width:992px){
+  .brand-title{
+    display:none;
+  }
+  form{
+    position:static !important;
+    transform:none !important;
+    margin-top:10px;
+    width:100% !important;
+  }
+}
+</style>
+
+
+<nav class="navbar navbar-expand-lg shadow">
+<div class="container-fluid">
+
+<!-- Logo -->
+
+<a class="navbar-brand" href="{% url 'user-dashboard' %}">
+<img src="{% static 'images/logo.png' %}" height="40">
+</a>
+<!-- Brand Title -->
+<h5 class="position-absolute top-50 start-50 translate-middle m-0 brand-title">✨ Event World ✨</h5>
+
+<!-- Toggler -->
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<!-- Nav Items -->
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-3">
+
+<li class="nav-item">
+<a class="nav-link active" href="{% url 'user-dashboard' %}">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#Artist">Artists</a>
+</li>
+
+<a class="nav-link" href="{% url 'event-home' %}">
+Events
+</a>
+<li class="nav-item">
+  <a href="{% url 'logout' %}" class="btn btn-danger">
+Logout
+</a>
+</li>
+
+
+<li class="nav-item">
+<a href="{% url 'profile' %}" class="btn btn-primary">Profile</a>
+</li>
+
+</ul>
+</div>
+
+<!-- Search -->
+<form class="d-flex" method="GET" action="">
+<input class="form-control me-2 rounded-3" type="search" name="q" placeholder="Search Artists / Events">
+<button class="btn search-btn rounded-3">Search</button>
+</form>
+
+</div>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
